@@ -1,8 +1,11 @@
 import express from "express"
-
+import dotenv from 'dotenv';
 import cors from "cors"
 import mongoose from "mongoose";
-const PORT = 3001;
+
+dotenv.config();
+// console.log(process.env.MONGO_URL)
+const PORT = process.env.PORT;
 
 const app = express()
 
@@ -460,7 +463,7 @@ if(!email){
 async function ConnectDb() {
     try {
 
-        const res = await mongoose.connect("mongodb+srv://hellobittukumar12:xtiXGuAsVKjkdKhR@forumcluster.qgjbok7.mongodb.net/?appName=forumCluster")
+        const res = await mongoose.connect(process.env.MONGO_URL)
         // console.log(res)
     } catch (err) {
         console.log(" Error while connecting to the database")

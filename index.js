@@ -110,7 +110,7 @@ app.post("/createUser", async (req, res) => {
 
 
 
-        const existingUser = await User.findOne({ googleId })
+        const existingUser = await User.findOne({ _id:new Object(googleId )})
 
         if (existingUser) {
             return res.status(200).json({
